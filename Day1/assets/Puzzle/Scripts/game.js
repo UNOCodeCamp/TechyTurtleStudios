@@ -1,35 +1,46 @@
 var passcode = ~~(Math.random()* 1000);
 var tries = 10;
 
-while (guess != passcode && tries > 0)
+var clueText = document.getElementById("clues");
+
+var button = document.getElementById("guess-button");
+var number = document.getElementById("guess-number");
+
+var attemptsText = document.getElementById("attempts");
+attemptsText.innerHTML = "Number of attempts left: " + tries;
+
+button.addEventListener("click", guessNumber);
+
+function guessNumber()
 {
-    console.log("You have" + tries + "guesses left");
-    console.log ("Guess a number between 0-999");
-    var guess = prompt("Enter a number (0-999)");
+    attemptsText.innerHTML = "Number of attempts left: " + tries;
+   
+    var guess = number.value; 
     tries = tries - 1;
     if (guess == passcode)
     {
-        console.log("you win");
+        document.body.innerHTML = "<h1>You win!</h1>"
     }
     else if (tries <= 0)
     {
-        console.log("you lose");
+        document.body.innerHTML = "<h1>You Lose!</h1>" + "<p> The number was :"+ passcode + "</p>";
     }
     else
     {
-        giveClue();
+        giveClue(guess);
     }
 }
 
 
-function giveClue()
+function giveClue(guess)
 {
     if (guess > passcode)
     {
-        console.log("Too high")
+        clueText.innerHTML += "<li>" + guess + "too high" + "</li>"
     }
     else
     {
-        console.log("Too low")
+        alert("Too low")
+        clueText.innerHTML += "<li>" + guess + "too low" + "</li>"
     }
 }
