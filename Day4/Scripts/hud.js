@@ -3,13 +3,13 @@ hud = new Object();
 
 hud.draw = function()
 {
-	hud.drawText("Hits:" +game.score,32,32, "left",24);
-}
+
+};
 
 hud.drawText = function(text, x, y, align, size)
 {
 	// #Score
-	renderer.ctx.fillStyle = "rgb(000, 000, 000)"; //set to white
+	renderer.ctx.fillStyle = "rgb(000, 000, 000)"; //set to black
 	renderer.ctx.font =  size + "px Helvetica";  //set the font
 	renderer.ctx.textAlign = align; //set to left
 	renderer.ctx.textBaseline = "top"; //set to top
